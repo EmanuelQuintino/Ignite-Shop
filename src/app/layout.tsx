@@ -3,7 +3,7 @@ import { globalStyles } from "@/styles/global";
 import { Roboto } from "next/font/google";
 import logoImg from "../assets/logo.svg";
 import Image from "next/image";
-import { Container, Header } from "@/styles/app/page";
+import { Container, Header } from "@/styles/app/layout";
 
 const baseFont = Roboto({
   weight: ["400", "500", "700"],
