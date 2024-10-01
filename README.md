@@ -1,1 +1,1 @@
-# Ignite-Shop
+# Ignite Shop
