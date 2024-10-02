@@ -12,7 +12,7 @@ type Products = {
   id: string;
   name: string;
   imageURL: string;
-  price: number;
+  price: string;
 }[];
 
 export default function Home() {
@@ -38,7 +38,10 @@ export default function Home() {
           id: product.id,
           name: product.name,
           imageURL: product.images[0],
-          price: (price.unit_amount || 0) / 100,
+          price: ((price.unit_amount || 0) / 100).toLocaleString("pt-BR", {
+            style: "currency",
+            currency: "BRL",
+          }),
         };
       });
 
@@ -57,12 +60,7 @@ export default function Home() {
 
             <footer>
               <strong>{product.name}</strong>
-              <span>
-                {product.price.toLocaleString("pt-BR", {
-                  style: "currency",
-                  currency: "BRL",
-                })}
-              </span>
+              <span>{product.price}</span>
             </footer>
           </Product>
         );
