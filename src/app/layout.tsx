@@ -4,6 +4,7 @@ import { Roboto } from "next/font/google";
 import logoImg from "../assets/logo.svg";
 import Image from "next/image";
 import { Container, Header } from "@/styles/app/layout";
+import Link from "next/link";
 
 const baseFont = Roboto({
   weight: ["400", "500", "700"],
@@ -23,7 +24,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <Container>
           <Header>
-            <Image src={logoImg.src} alt="logo ignite" width={130} height={52} />
+            <Link href={"/"}>
+              <Image src={logoImg.src} alt="logo ignite" width={130} height={52} />
+            </Link>
           </Header>
 
           {children}
