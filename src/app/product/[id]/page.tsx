@@ -3,7 +3,7 @@
 import { stripe } from "@/lib/stripe";
 import { ImageContainer, ProductContainer, ProductDetails } from "@/styles/app/product";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Stripe from "stripe";
 
 type Props = {
@@ -16,6 +16,7 @@ type Product = {
   imageURL: string;
   price: string;
   description: string | null;
+  defaultPriceID: string;
 };
 
 export default function Product({ params }: Props) {
@@ -39,12 +40,19 @@ export default function Product({ params }: Props) {
         currency: "BRL",
       }),
       description: response.description,
+      defaultPriceID: price.id,
     };
 
     setProduct(product);
   };
 
-  fetchProduct();
+  function handleBuyProduct() {
+    console.log(product);
+  }
+
+  useEffect(() => {
+    fetchProduct();
+  }, []);
 
   return (
     <>
@@ -59,7 +67,7 @@ export default function Product({ params }: Props) {
           <h1>{product?.name}</h1>
           <span>{product?.price}</span>
           <p>{product?.description}</p>
-          <button>Comprar agora</button>
+          <button onClick={handleBuyProduct}>Comprar agora</button>
         </ProductDetails>
       </ProductContainer>
     </>
