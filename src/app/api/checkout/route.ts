@@ -12,7 +12,7 @@ export async function POST(req: Request) {
     });
   }
 
-  const successURL = `${process.env.APP_URL}/success`;
+  const successURL = `${process.env.APP_URL}/success?session_id={CHECKOUT_SESSION_ID}`;
   const cancelURL = `${process.env.APP_URL}/`;
 
   const checkoutSession = await stripe.checkout.sessions.create({
